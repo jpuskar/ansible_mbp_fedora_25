@@ -10,13 +10,12 @@ sudo yum group install -y "Development Tools"
 sudo yum install -y openssl-devel
 sudo yum install -y vim-enhanced
 sudo yum install -y libffi-devel
+sudo yum install -y python2-dnf
 sudo pip install --upgrade pip
 sudo pip install virtualenv
+sudo pip install ansible
 
 cd ~
 mkdir ansible
 cd ansible
-virtualenv venv
-source ./venv/bin/activate
-pip install ansible
 ```
