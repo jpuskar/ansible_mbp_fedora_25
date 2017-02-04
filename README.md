@@ -11,6 +11,8 @@ sudo yum install -y openssl-devel
 sudo yum install -y vim-enhanced
 sudo yum install -y libffi-devel
 sudo yum install -y python2-dnf
+sudo yum install -y libselinux-python
+
 sudo pip install --upgrade pip
 sudo pip install virtualenv
 sudo pip install ansible

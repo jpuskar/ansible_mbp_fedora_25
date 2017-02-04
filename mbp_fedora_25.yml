@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   tasks:
+
     - name: install RPMFusion repos for wifi
       dnf:
         name: "{{ item }}"
@@ -56,3 +57,20 @@
         dest: /opt/gpu-switch
         clone: yes
         update: no
+
+    - name: create rc.local
+      command: touch /etc/rc.local
+      args:
+        creates: /etc/rc.local
+    - name: change /etc/rc.local to +x
+      command: chmod +x /etc/rc.local
+    - name: enable rc.local
+      systemd:
+        name: rc-local.service
+        enabled: True
+    - name: disable discrete graphics on boot by default
+      blockinfile:
+        dest: /etc/rc.local
+        content: echo OFF > /sys/kernel/debug/vgaswitcheroo/switch
+
+
